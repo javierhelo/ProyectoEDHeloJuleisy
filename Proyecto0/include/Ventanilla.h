@@ -1,6 +1,7 @@
 #ifndef VENTANILLA_H
 #define VENTANILLA_H
 
+#include <string>
 
 class Ventanilla{
 private:
