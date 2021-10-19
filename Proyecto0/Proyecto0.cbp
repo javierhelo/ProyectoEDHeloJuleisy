@@ -34,11 +34,13 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="include/LinkedPriorityQueue.h" />
+		<Unit filename="include/LinkedList.h" />
 		<Unit filename="include/LinkedQueue.h" />
+		<Unit filename="include/List.h" />
 		<Unit filename="include/Node.h" />
-		<Unit filename="include/PriorityQueue.h" />
 		<Unit filename="include/Queue.h" />
+		<Unit filename="include/Servicios.h" />
+		<Unit filename="include/Tiquete.h" />
 		<Unit filename="include/Ventanilla.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>

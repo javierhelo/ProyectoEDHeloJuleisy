@@ -1,11 +1,14 @@
 #ifndef LINKEDQUEUE_H
 #define LINKEDQUEUE_H
 
+#include <ostream>
 #include "Queue.h"
 #include "Node.h"
 #include <stdexcept>
 
 using std::runtime_error;
+using std::cout;
+using std::endl;
 
 template <typename E>
 class LinkedQueue: public Queue<E>{
@@ -67,6 +70,16 @@ public:
         return size;
     }
 
+    void print(){
+        Node<E> *temp = front->next;
+        cout << "[ ";
+        for (int i = 0; i < size; i++){
+            cout << temp->element << " ";
+            temp = temp->next;
+        }
+        cout << "]";
+        delete temp;
+    }
 };
 
 #endif // LINKEDQUEUE_H

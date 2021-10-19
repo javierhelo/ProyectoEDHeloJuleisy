@@ -1,54 +1,83 @@
 #ifndef VENTANILLA_H
 #define VENTANILLA_H
+#include <iostream>
 
-#include "LinkedPriorityQueue.h"
+#include <string>
+#include "Tiquete.h"
 
-template <typename C, typename V>
+#include "LinkedList.h"
+#include "LinkedQueue.h"
+
+using std::cout;
+using std::endl;
+using std::string;
+using std::ostream;
+
+template <typename E>
 class Ventanilla{
+private:
+    string descripcion;
+    string codigo;
+    LinkedList<Ventanilla> *ventanillas = new LinkedList<Ventanilla>();
+    int cantidad; //hagalo una lista con todas las ventanillas
+    LinkedQueue<Tiquete<E>> *colaRegular = new LinkedQueue<Tiquete<E>>();
+    LinkedQueue<Tiquete<E>> *colaPreferencial = new LinkedQueue<Tiquete<E>>();
+
 public:
-    PriorityQueue<Ventanilla<C,V>> *cola = new LinkedPriorityQueue<Ventanilla<C,V>>(2);
-    C codigo;
-    V subventanilla;
-
-    Ventanilla(){}
-
-    Ventanilla(C codigo){
-        this->codigo = codigo;
+    Ventanilla(){
     }
-
-    Ventanilla(C codigo, V subventanilla){
+    Ventanilla(string descripcion, string codigo, int cantidad){
+        this->descripcion = descripcion;
         this->codigo = codigo;
-        this->codigo = codigo;
+        this->cantidad = cantidad;
+        for (int i = 0; i <  cantidad; i++){
+            Ventanilla *nueva = new Ventanilla(descripcion, codigo, 0); // codigo += 1
+            ventanillas->append(nueva);
+        }
     }
-
+    ~Ventanilla(){
+        delete ventanillas;
+        delete colaRegular;
+        delete colaPreferencial;
+    }
+    void printVentanilla(){
+        cout << descripcion << "-" << codigo << "-" << cantidad << endl;
+        cout << "cola regular: ";
+        colaRegular->print();
+        cout << "cola preferencial: ";
+        colaPreferencial->print();
+        cout << "ventanillas: " ;
+        ventanillas->print();
+    }
     void operator=(const Ventanilla& other){
         this->codigo = other.codigo;
-        this->subventanilla = other.subventanilla;
+        this->cantidad = other.cantidad;
     }
-
     bool operator==(const Ventanilla& other){
-        return this->codigo == other.codigo;
+        return this->codigo == other.codigo && this->cantidad == other.cantidad;
     }
-
     bool operator!=(const Ventanilla& other){
-        return this->codigo != other.codigo;
+        return this->codigo != other.codigo && this->cantidad != other.cantidad;
     }
-
     bool operator<(const Ventanilla& other){
-        return this->codigo < other.codigo;
+        return this->codigo < other.codigo && this->cantidad < other.cantidad;
     }
-
     bool operator<=(const Ventanilla& other){
-        return this->codigo <= other.codigo;
+        return this->codigo <= other.codigo && this->cantidad <= other.cantidad;
     }
-
     bool operator>(const Ventanilla& other){
-        return this->codigo > other.codigo;
+        return this->codigo > other.codigo && this->cantidad > other.cantidad;
+    }
+    bool operator>=(const Ventanilla& other){
+        return this->codigo >= other.codigo && this->cantidad >= other.cantidad;
     }
 
-    bool operator>=(const Ventanilla& other){
-        return this->codigo >= other.codigo;
-    }
+
 };
+template <typename E>
+ostream& operator << (ostream& os, const Ventanilla<E>& p){
+    os << p.codigo << " " << p.cantidad << endl;
+    return os;
+}
 
 #endif // VENTANILLA_H
