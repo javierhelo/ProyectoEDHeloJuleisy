@@ -7,7 +7,6 @@ using std::string;
 using std::ostream;
 using std::endl;
 
-template <typename E>
 class Tiquete{
 private:
     string codigo;
@@ -49,8 +48,7 @@ public:
 };
 // Función para sobreescribir el funcionamiento del operador
 //<< en Tiquete
-template <typename E>
-ostream& operator << (ostream& os, const Tiquete<E>& p){
+ostream& operator << (ostream& os, const Tiquete& p){
     os << p.codigo << " " << p.preferencia << endl;
     return os;
 }
