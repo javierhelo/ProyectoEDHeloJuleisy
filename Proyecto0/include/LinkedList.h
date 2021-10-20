@@ -1,3 +1,6 @@
+//Clase hija de List, implementa las funciones
+//descritas en List.h utilizando listas enlazadas
+//con nodos
 #ifndef LINKEDLIST_H
 #define LINKEDLIST_H
 

@@ -8,11 +8,10 @@ using std::ostream;
 using std::endl;
 
 class Tiquete{
-private:
+public:
     string codigo;
     bool preferencia;
 
-public:
     Tiquete(){
     }
     Tiquete(string codigo, bool preferencia){
@@ -21,6 +20,7 @@ public:
     }
     ~Tiquete(){
     }
+
     void operator=(const Tiquete& other){
         this->codigo = other.codigo;
     }

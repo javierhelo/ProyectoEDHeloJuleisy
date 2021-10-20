@@ -1,7 +1,7 @@
 #include <iostream>
 #include <locale.h>
 
-#include "Ventanilla.h"
+#include "TipoVentanilla.h"
 
 using namespace std;
 
@@ -97,7 +97,7 @@ int main(){
     string descripcion = "Cajas";
     string codigo = "C";
     int cantidad = 3;
-    Ventanilla<int> *prueba = new Ventanilla<int>(descripcion, codigo, cantidad);
+    TipoVentanilla *prueba = new TipoVentanilla(descripcion, codigo, cantidad);
     prueba->printVentanilla();
     return 0;
 }

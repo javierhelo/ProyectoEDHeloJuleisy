@@ -1,3 +1,5 @@
+//Clase abstracta para la implementación de colas
+//
 #ifndef QUEUE_H
 #define QUEUE_H
 
