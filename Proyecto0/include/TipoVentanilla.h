@@ -1,6 +1,9 @@
+//Clase que define los tipos de ventanillas que se pueden crear
+//
 #ifndef TIPOVENTANILLA_H
 #define TIPOVENTANILLA_H
 #include <iostream>
+#include <sstream> //Biblioteca para convertir enteros a strings
 
 #include <string>
 #include "Tiquete.h"
@@ -12,6 +15,7 @@ using std::cout;
 using std::endl;
 using std::string;
 using std::ostream;
+using std::stringstream;
 
 
 class TipoVentanilla{
@@ -23,7 +27,7 @@ public:
     LinkedQueue<Tiquete> *colaRegular;
     LinkedQueue<Tiquete> *colaPreferencial;
 
-public:
+
     TipoVentanilla(){
     }
     TipoVentanilla(string descripcion, string codigo, int cantidad){
@@ -33,9 +37,14 @@ public:
         ventanillas = new LinkedList<Ventanilla>();
         colaRegular = new LinkedQueue<Tiquete>();
         colaPreferencial = new LinkedQueue<Tiquete>();
+        string codigoFalso = codigo;
         for (int i = 0; i <  cantidad; i++){
-            Ventanilla nueva(codigo += i); // codigo += 1
+            stringstream numVentanaString;  // se declara el string donde se quiere guardar el entero
+            numVentanaString << i;          // en NumVentana queda i convertido en string
+            string numeroI = numVentanaString.str();
+            Ventanilla nueva(codigoFalso += numeroI); // codigo += 1
             ventanillas->append(nueva);
+            codigoFalso = codigo;
         }
     }
     ~TipoVentanilla(){
@@ -48,21 +57,23 @@ public:
     void setDescripcion(string descripcion){
         this->descripcion = descripcion;
     }
-    string getDescripcion(){
-        return descripcion;
-    }
+
     void setCodigo(string codigo){
         this->codigo = codigo;
     }
-    string getCodigo(){
-        return codigo;
-    }
+
     void setCantidadVentanillas(int cantidad){ //Se pueden poner cero ventanillas
         this->cantidad = cantidad;
         ventanillas->clear();
+
+        string codigoFalso;
         for (int i = 0; i <  cantidad; i++){
-            Ventanilla nueva(codigo += i); // codigo += 1
+            stringstream numVentanaString;  // se declara el string donde se quiere guardar el entero
+            numVentanaString << i;          // en NumVentana queda i convertido en string
+            string numeroI = numVentanaString.str();
+            Ventanilla nueva(codigoFalso += numeroI); // codigo += 1
             ventanillas->append(nueva);
+            codigoFalso = codigo;
         }
 
     }
@@ -75,9 +86,15 @@ public:
         colaRegular->print();
         cout << "cola preferencial: ";
         colaPreferencial->print();
-        cout << "ventanillas: " ;
+        cout << "ventanillas: " << endl;
         ventanillas->print();
     }
+
+    //Funcion para solicitar Tiquete
+    Tiquete* solicitarTiquete(bool preferencial){
+
+    }
+
     void operator=(const TipoVentanilla& other){
         this->codigo = other.codigo;
         this->cantidad = other.cantidad;

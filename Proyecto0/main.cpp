@@ -99,6 +99,7 @@ int main(){
     int cantidad = 3;
     TipoVentanilla *prueba = new TipoVentanilla(descripcion, codigo, cantidad);
     prueba->printVentanilla();
+
     return 0;
 }
 

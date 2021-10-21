@@ -10,7 +10,7 @@ public:
     string codigo;
     Tiquete *campo;
 
-public:
+
     Ventanilla(){}
 //    Ventanilla(string codigo){
 //        this->codigo = codigo;
@@ -24,9 +24,6 @@ public:
     }
     void setCodigo(string codigo){
         this->codigo = codigo;
-    }
-    string getCodigo(){
-        return codigo;
     }
     void setCampo(Tiquete *nuevoTiquet){ //Seria atender?
         campo = nuevoTiquet;

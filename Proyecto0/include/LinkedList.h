@@ -121,8 +121,8 @@ public:
             cout << getElement() << " ";
         cout << "]";
         current = oldCurrent;
-
     }
+
     //Nuevas Funciones
     int indexOf(E element){
         Node<E> *temp = current;

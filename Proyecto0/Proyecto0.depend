@@ -1,5 +1,40 @@
 # depslib dependency file v1.0
-1634406551 source:c:\users\javier\documents\github\proyectoedhelojuleisy\proyecto0\main.cpp
+1634787063 source:c:\users\javier\documents\github\proyectoedhelojuleisy\proyecto0\main.cpp
 	<iostream>
 	<locale.h>
+	"TipoVentanilla.h"
+
+1634787625 c:\users\javier\documents\github\proyectoedhelojuleisy\proyecto0\include\tipoventanilla.h
+	<iostream>
+	<sstream>
+	<string>
+	"Tiquete.h"
+	"Ventanilla.h"
+	"LinkedList.h"
+	"LinkedQueue.h"
+
+1634710208 c:\users\javier\documents\github\proyectoedhelojuleisy\proyecto0\include\tiquete.h
+	<iostream>
+	<string>
+
+1634786140 c:\users\javier\documents\github\proyectoedhelojuleisy\proyecto0\include\ventanilla.h
+	"Tiquete.h"
+	<string>
+
+1634787625 c:\users\javier\documents\github\proyectoedhelojuleisy\proyecto0\include\linkedlist.h
+	"List.h"
+	"Node.h"
+	<stdexcept>
+
+1634709898 c:\users\javier\documents\github\proyectoedhelojuleisy\proyecto0\include\list.h
+
+1634709898 c:\users\javier\documents\github\proyectoedhelojuleisy\proyecto0\include\node.h
+
+1634621731 c:\users\javier\documents\github\proyectoedhelojuleisy\proyecto0\include\linkedqueue.h
+	<ostream>
+	"Queue.h"
+	"Node.h"
+	<stdexcept>
+
+1634709898 c:\users\javier\documents\github\proyectoedhelojuleisy\proyecto0\include\queue.h
 
