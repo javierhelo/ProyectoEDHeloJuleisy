@@ -42,7 +42,7 @@
 		<Unit filename="include/List.h" />
 		<Unit filename="include/Node.h" />
 		<Unit filename="include/Queue.h" />
-		<Unit filename="include/Servicios.h" />
+		<Unit filename="include/Servicio.h" />
 		<Unit filename="include/TipoVentanilla.h" />
 		<Unit filename="include/Tiquete.h" />
 		<Unit filename="include/UnsortedArrayDictionary.h" />
