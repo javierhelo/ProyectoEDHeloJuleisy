@@ -1,12 +1,12 @@
 # depslib dependency file v1.0
-1634881493 source:c:\users\javier\documents\github\proyectoedhelojuleisy\proyecto0\main.cpp
+1634884590 source:c:\users\javier\documents\github\proyectoedhelojuleisy\proyecto0\main.cpp
 	<iostream>
 	<locale.h>
 	"TipoVentanilla.h"
 	"Servicio.h"
 	"Tiquete.h"
 
-1634869415 c:\users\javier\documents\github\proyectoedhelojuleisy\proyecto0\include\tipoventanilla.h
+1634928627 c:\users\javier\documents\github\proyectoedhelojuleisy\proyecto0\include\tipoventanilla.h
 	<iostream>
 	<sstream>
 	<string>
@@ -19,7 +19,7 @@
 	<iostream>
 	<string>
 
-1634786140 c:\users\javier\documents\github\proyectoedhelojuleisy\proyecto0\include\ventanilla.h
+1634928340 c:\users\javier\documents\github\proyectoedhelojuleisy\proyecto0\include\ventanilla.h
 	"Tiquete.h"
 	<string>
 
@@ -90,7 +90,7 @@
 	"List.h"
 	<stdexcept>
 
-1634882361 c:\users\javier\documents\github\proyectoedhelojuleisy\proyecto0\include\servicio.h
+1634883219 c:\users\javier\documents\github\proyectoedhelojuleisy\proyecto0\include\servicio.h
 	"ArrayList.h"
 	<string>
 	<stdexcept>

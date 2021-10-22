@@ -14,8 +14,8 @@
 using std::cout;
 using std::endl;
 using std::string;
+using std::to_string;
 using std::ostream;
-using std::stringstream;
 
 
 class TipoVentanilla{
@@ -37,14 +37,10 @@ public:
         ventanillas = new LinkedList<Ventanilla>();
         colaRegular = new LinkedQueue<Tiquete>();
         colaPreferencial = new LinkedQueue<Tiquete>();
-        string codigoFalso = codigo;
         for (int i = 0; i <  cantidad; i++){
-            stringstream numVentanaString;  // se declara el string donde se quiere guardar el entero
-            numVentanaString << i;          // en NumVentana queda i convertido en string
-            string numeroI = numVentanaString.str();
-            Ventanilla nueva(codigoFalso += numeroI); // codigo += 1
+            string numero = to_string(i);
+            Ventanilla nueva(codigo + numero); // codigo += 1
             ventanillas->append(nueva);
-            codigoFalso = codigo;
         }
     }
     ~TipoVentanilla(){
@@ -65,15 +61,10 @@ public:
     void setCantidadVentanillas(int cantidad){ //Se pueden poner cero ventanillas
         this->cantidad = cantidad;
         ventanillas->clear();
-
-        string codigoFalso;
         for (int i = 0; i <  cantidad; i++){
-            stringstream numVentanaString;  // se declara el string donde se quiere guardar el entero
-            numVentanaString << i;          // en NumVentana queda i convertido en string
-            string numeroI = numVentanaString.str();
-            Ventanilla nueva(codigoFalso += numeroI); // codigo += 1
+            string numero = to_string(i);
+            Ventanilla nueva(codigo + numero); // codigo += 1
             ventanillas->append(nueva);
-            codigoFalso = codigo;
         }
 
     }
@@ -91,6 +82,7 @@ public:
     }
 
     //Funcion para solicitar Tiquete
+    //se puede retornar para imprimir el tiquete o string
    // Tiquete* solicitarTiquete(bool preferencial){
 
    // }

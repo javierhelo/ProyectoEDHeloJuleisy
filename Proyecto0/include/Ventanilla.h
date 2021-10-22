@@ -58,7 +58,7 @@ public:
 
 };
 ostream& operator << (ostream& os, const Ventanilla& p){
-    os << p.codigo << endl;
+    os << p.codigo;
     return os;
 }
 
