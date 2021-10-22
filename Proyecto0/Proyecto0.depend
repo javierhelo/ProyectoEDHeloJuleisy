@@ -38,3 +38,53 @@
 
 1634709898 c:\users\javier\documents\github\proyectoedhelojuleisy\proyecto0\include\queue.h
 
+1634863481 source:c:\users\juley\documents\github\proyectoedhelojuleisy\proyecto0\main.cpp
+	<iostream>
+	<locale.h>
+	"TipoVentanilla.h"
+	"Servicio.h"
+	"Tiquete.h"
+
+1634862600 c:\users\juley\documents\github\proyectoedhelojuleisy\proyecto0\include\tipoventanilla.h
+	<iostream>
+	<sstream>
+	<string>
+	"Tiquete.h"
+	"Ventanilla.h"
+	"LinkedList.h"
+	"LinkedQueue.h"
+
+1634859023 c:\users\juley\documents\github\proyectoedhelojuleisy\proyecto0\include\tiquete.h
+	<iostream>
+	<string>
+
+1634859023 c:\users\juley\documents\github\proyectoedhelojuleisy\proyecto0\include\ventanilla.h
+	"Tiquete.h"
+	<string>
+
+1634859022 c:\users\juley\documents\github\proyectoedhelojuleisy\proyecto0\include\linkedlist.h
+	"List.h"
+	"Node.h"
+	<stdexcept>
+
+1634859022 c:\users\juley\documents\github\proyectoedhelojuleisy\proyecto0\include\list.h
+
+1634859022 c:\users\juley\documents\github\proyectoedhelojuleisy\proyecto0\include\node.h
+
+1634859022 c:\users\juley\documents\github\proyectoedhelojuleisy\proyecto0\include\linkedqueue.h
+	<ostream>
+	"Queue.h"
+	"Node.h"
+	<stdexcept>
+
+1634859023 c:\users\juley\documents\github\proyectoedhelojuleisy\proyecto0\include\queue.h
+
+1634862600 c:\users\juley\documents\github\proyectoedhelojuleisy\proyecto0\include\servicio.h
+	"ArrayList.h"
+	<string>
+	<stdexcept>
+
+1634859022 c:\users\juley\documents\github\proyectoedhelojuleisy\proyecto0\include\arraylist.h
+	"List.h"
+	<stdexcept>
+

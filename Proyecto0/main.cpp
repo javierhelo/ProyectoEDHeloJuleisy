@@ -2,11 +2,60 @@
 #include <locale.h>
 
 #include "TipoVentanilla.h"
+#include "Servicio.h"
+#include "Tiquete.h"
 
 using namespace std;
 
-int Prueba1(){
+int main(){
     setlocale(LC_ALL, "");
+
+    //lista para llevar control de todos los tipos de ventanillas
+    ArrayList<TipoVentanilla> *totalVentanillas = new ArrayList<TipoVentanilla>();
+
+    //Creando tipos de ventanillas arbitrarias
+    string descripcion1 = "Cajas";
+    string codigo1 = "C";
+    int cantidad1 = 4;
+
+    string descripcion2 = "Servicio al cliente";
+    string codigo2 = "S";
+    int cantidad2 = 6;
+
+    string descripcion3 = "Información";
+    string codigo3 = "I";
+    int cantidad3 = 3;
+
+    TipoVentanilla cajas(descripcion1, codigo1, cantidad1);
+    TipoVentanilla servicioCliente(descripcion2, codigo2, cantidad2);
+    TipoVentanilla informacion(descripcion3, codigo3, cantidad3);
+
+    totalVentanillas->append(cajas);
+    totalVentanillas->append(servicioCliente);
+    totalVentanillas->append(informacion);
+
+    cout << "Probando 1..." << endl;
+
+    //Agregando serivicios disponibles
+    Servicio *serviciosDisponibles = new Servicio("", "");
+
+    cout << "2..." << endl;
+
+    serviciosDisponibles->agregarServicio("Depósito", "C");
+    serviciosDisponibles->agregarServicio("Retiro", "C");
+    serviciosDisponibles->agregarServicio("Solicitar tarjeta", "S");
+    serviciosDisponibles->agregarServicio("Pagar recibo", "C");
+    serviciosDisponibles->agregarServicio("Estado de cuenta", "I");
+    serviciosDisponibles->agregarServicio("Pagar marchamo", "C");
+    serviciosDisponibles->agregarServicio("Cancelar tarjeta", "S");
+    serviciosDisponibles->agregarServicio("Cambio de colones a dólares", "C");
+    serviciosDisponibles->agregarServicio("Cambio de dólares a colones", "C");
+    serviciosDisponibles->agregarServicio("Retirar marchamo", "I");
+
+    cout << "3..." << endl;
+
+    serviciosDisponibles->printS();
+
     cout << "Bienvenido al sistema de administración de colas: "<< endl;
     cout << "1. Ver estado de las colas" << endl;
     cout << "2. Solicitar tiquete" << endl;
@@ -19,9 +68,13 @@ int Prueba1(){
     cin >> n;
     switch(n){
     case 1:
-        //Debe mostrar los tipos de ventanillas existentes, la cantidad de ventanillas definidas para cada tipo y
-        //los códigos de los tiquetes presentes en las diferentes colas.
+        cajas.printVentanilla();
+        servicioCliente.printVentanilla();
+        informacion.printVentanilla();
+
+
         break;
+
     case 2:
         cout << "a. Seleccionar servicio" << endl;
         cout << "b. Cliente preferencial" << endl;
@@ -93,15 +146,7 @@ int Prueba1(){
         return 0;
 }
 
-int main(){
-    string descripcion = "Cajas";
-    string codigo = "C";
-    int cantidad = 3;
-    TipoVentanilla *prueba = new TipoVentanilla(descripcion, codigo, cantidad);
-    prueba->printVentanilla();
 
-    return 0;
-}
 
 
 

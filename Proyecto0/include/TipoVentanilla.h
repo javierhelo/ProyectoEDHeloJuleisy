@@ -91,9 +91,9 @@ public:
     }
 
     //Funcion para solicitar Tiquete
-    Tiquete* solicitarTiquete(bool preferencial){
+   // Tiquete* solicitarTiquete(bool preferencial){
 
-    }
+   // }
 
     void operator=(const TipoVentanilla& other){
         this->codigo = other.codigo;

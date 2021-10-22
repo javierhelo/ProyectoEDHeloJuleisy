@@ -15,23 +15,26 @@ public:
     string codigo;
     ArrayList<Servicio> *listaServicios;
 
-    Servicio(){}
+    Servicio(){
+        listaServicios = new ArrayList<Servicio>();
+    }
+
     Servicio(string descripcion, string codigo){
         this->descripcion = descripcion;
         this->codigo = codigo;
         listaServicios = new ArrayList<Servicio>();
     }
     ~Servicio(){
-        delete servicios;
+        delete listaServicios;
     }
 
     void agregarServicio(string descripcion, string codigo){
-        Servicio *nuevo = new Servicio(descripcion, codigo);
+        Servicio nuevo(descripcion, codigo);
         listaServicios->append(nuevo);
     }
 
     void eliminarServicio(int pos){
-        if (pos < 0 || pos > listaServicios->size){
+        if (pos < 0 || pos > listaServicios->getSize()){
             throw runtime_error("Seleccione una posicion valida en la lista de servicios.");
         }
         listaServicios->goToPos(pos);
@@ -39,10 +42,10 @@ public:
     }
 
     void reordenar(int posActual, int posDestino){
-        if (posActual < 0 || posActual > listaServicios->size){
+        if (posActual < 0 || posActual > listaServicios->getSize()){
             throw runtime_error("Seleccione una posicion valida en la lista de servicios.");
         }
-        if (posDestino < 0 || posDestino > listaServicios->size){
+        if (posDestino < 0 || posDestino > listaServicios->getSize()){
             throw runtime_error("Seleccione una posicion valida en la lista de servicios.");
         }
         listaServicios->goToPos(posActual);
@@ -51,10 +54,44 @@ public:
         listaServicios->insert(eliminado);
     }
 
+    void printS(){
+        cout << "Servicios disponibles: " << endl;
+        for (int i = 0; i < listaServicios->getSize(); i++){
+            listaServicios->goToPos(i);
+            Servicio actual = listaServicios->getElement();
+            cout << i << " - " << actual.descripcion << endl;
+        }
+    }
 
-
-
+    void operator=(const Servicio& other){
+        this->descripcion = other.descripcion;
+        this->codigo = other.codigo;
+    }
+    bool operator==(const Servicio& other){
+        return this->codigo == other.codigo && this->descripcion == other.descripcion;
+    }
+    bool operator!=(const Servicio& other){
+        return this->codigo != other.codigo && this->descripcion!= other.descripcion;
+    }
+    bool operator<(const Servicio& other){
+        return this->codigo < other.codigo && this->descripcion < other.descripcion;
+    }
+    bool operator<=(const Servicio& other){
+        return this->codigo <= other.codigo && this->descripcion <= other.descripcion;
+    }
+    bool operator>(const Servicio& other){
+        return this->codigo > other.codigo && this->descripcion > other.descripcion;
+    }
+    bool operator>=(const Servicio& other){
+        return this->codigo >= other.codigo && this->descripcion >= other.descripcion;
+    }
 
 };
+
+ostream& operator << (ostream& os, const Servicio& p){
+    os << p.codigo << " " << p.descripcion << endl;
+    return os;
+}
+
 
 #endif // SERVICIO_H
