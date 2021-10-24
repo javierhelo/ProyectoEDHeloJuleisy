@@ -4,6 +4,7 @@
 #define TIPOVENTANILLA_H
 #include <iostream>
 #include <sstream> //Biblioteca para convertir enteros a strings
+#include <time.h>
 
 #include <string>
 #include "Tiquete.h"
@@ -23,11 +24,12 @@ public:
     string descripcion;
     string codigo;
     List<Ventanilla> *ventanillas;
-    int cantidad;       //define la cantidad de ventanillas que van a haber en el atributo ventanillas
+    int cantidad;                       //define la cantidad de ventanillas que van a haber en el atributo ventanillas
     Queue<Tiquete> *colaRegular;
     Queue<Tiquete> *colaPreferencial;
-    int numeroTiquete = 0;
-    int solicitadosPreferenciales = 0;
+    int numeroTiquete = 0;              //variable para saber por que numero de tiquete va la ventanilla
+    int solicitadosPreferenciales = 0;  //llevar cuenta de cuantos tiquetes preferenciales se solicitan
+
 
 
     TipoVentanilla(){

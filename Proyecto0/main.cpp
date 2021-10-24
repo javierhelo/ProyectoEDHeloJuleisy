@@ -87,9 +87,10 @@ int main(){
     //MENU PRINCIPAL
 
     int tiquetesPreferenciales = 0;     //Contador de tiquetes preferenciales
-    bool seguirDentro = true;
+    bool seguirDentro = true;           //Valor booleano que dice si el usuario quiere hacer otro trámite
     while (seguirDentro){
-    bool regresar = false;     //Variable para poder utilizar la opción de regresar al menú principal
+    bool regresar = false;              //Variable para poder utilizar la opción de regresar al menú principal
+
     cout << "Bienvenido al sistema de administración de colas: "<< endl;
     cout << "1. Ver estado de las colas" << endl;
     cout << "2. Solicitar tiquete" << endl;
@@ -98,7 +99,7 @@ int main(){
     cout << "5. Estadísticas del sistema" << endl;
     cout << "6. Salir" << endl;
     cout << "Escriba el número del proceso que desea realizar: " ;
-    int n;      //Chequear que sea un entero (PROOOFEEEEEEE ) "meter un string"
+    int n;                              //Chequear que sea un entero (PROOOFEEEEEEE ) "meter un string"
     cin >> n;
     while (n < 1 || n > 6){
         cout << "El número ingresado no está en las opciones, elija de nuevo que gusta hacer: ";
@@ -210,7 +211,7 @@ int main(){
         cout << tipoVentanillaAtiende->atender(numeroVentanilla);
         break;
         }
-    case 4:
+    case 4:                           //Administrar tipos de ventanillas y servicios disponibles
         cout << "a. Definir tipos de ventanillas" << endl;
         cout << "b. Definir servicios disponibles" << endl;
         cout << "Escoja una opción: ";
@@ -221,7 +222,7 @@ int main(){
         }
 
         switch(seleccion){
-        case 'a':
+        case 'a':                   //Agregar o Eliminar tipos de ventanillas
             cout << "1. Agregar" << endl;
             cout << "2. Eliminar" << endl;
             cout << "Elija su opción: ";
@@ -260,7 +261,7 @@ int main(){
                     delete esta;
             }
             break;
-        case 'b':
+        case 'b':           //Agregar o eliminar
             cout << "1. Agregar un servicio" << endl;
             cout << "2. Eliminar un servicio" << endl;
             cout << "3. Reordenar elementos en la lista" << endl;
