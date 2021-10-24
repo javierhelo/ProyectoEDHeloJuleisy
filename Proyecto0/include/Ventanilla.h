@@ -12,19 +12,23 @@ class Ventanilla{
 public:
     string codigo;
     Tiquete campo;
-    int atendidos = 0;  //atributo para llevar cuenta de tiquetes atendidos por ventanilla específica
+    int atendidos;  //atributo para llevar cuenta de tiquetes atendidos por ventanilla específica
 
 
-    Ventanilla(){}
+    Ventanilla(){
+        this->atendidos= 0;
+    }
 //    Ventanilla(string codigo){
 //        this->codigo = codigo;
 //    }
     Ventanilla(string codigo, Tiquete campo){
         this->codigo = codigo;
         this->campo = campo;
+        this->atendidos = 0;
     }
     Ventanilla(string codigo){
         this->codigo = codigo;
+        this->atendidos = 0;
     }
     ~Ventanilla(){
 

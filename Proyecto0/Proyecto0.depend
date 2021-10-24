@@ -1,25 +1,27 @@
 # depslib dependency file v1.0
-1635054700 source:c:\users\javier\documents\github\proyectoedhelojuleisy\proyecto0\main.cpp
+1635104870 source:c:\users\javier\documents\github\proyectoedhelojuleisy\proyecto0\main.cpp
 	<iostream>
 	<locale.h>
+	<sstream>
 	"TipoVentanilla.h"
 	"Servicio.h"
 	"Tiquete.h"
 
-1635054046 c:\users\javier\documents\github\proyectoedhelojuleisy\proyecto0\include\tipoventanilla.h
+1635064740 c:\users\javier\documents\github\proyectoedhelojuleisy\proyecto0\include\tipoventanilla.h
 	<iostream>
 	<sstream>
+	<time.h>
 	<string>
 	"Tiquete.h"
 	"Ventanilla.h"
 	"LinkedList.h"
 	"LinkedQueue.h"
 
-1635044149 c:\users\javier\documents\github\proyectoedhelojuleisy\proyecto0\include\tiquete.h
+1635064740 c:\users\javier\documents\github\proyectoedhelojuleisy\proyecto0\include\tiquete.h
 	<iostream>
 	<string>
 
-1635052122 c:\users\javier\documents\github\proyectoedhelojuleisy\proyecto0\include\ventanilla.h
+1635104870 c:\users\javier\documents\github\proyectoedhelojuleisy\proyecto0\include\ventanilla.h
 	"Tiquete.h"
 	<string>
 
@@ -32,7 +34,7 @@
 
 1634709898 c:\users\javier\documents\github\proyectoedhelojuleisy\proyecto0\include\node.h
 
-1635048484 c:\users\javier\documents\github\proyectoedhelojuleisy\proyecto0\include\linkedqueue.h
+1635099042 c:\users\javier\documents\github\proyectoedhelojuleisy\proyecto0\include\linkedqueue.h
 	<ostream>
 	"Queue.h"
 	"Node.h"
@@ -91,12 +93,12 @@
 	"List.h"
 	<stdexcept>
 
-1634883219 c:\users\javier\documents\github\proyectoedhelojuleisy\proyecto0\include\servicio.h
+1635064740 c:\users\javier\documents\github\proyectoedhelojuleisy\proyecto0\include\servicio.h
 	"ArrayList.h"
 	<string>
 	<stdexcept>
 
-1634792337 c:\users\javier\documents\github\proyectoedhelojuleisy\proyecto0\include\arraylist.h
+1635064740 c:\users\javier\documents\github\proyectoedhelojuleisy\proyecto0\include\arraylist.h
 	"List.h"
 	<stdexcept>
 

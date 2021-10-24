@@ -1,5 +1,6 @@
 #include <iostream>
 #include <locale.h>
+#include <sstream>
 
 #include "TipoVentanilla.h"
 #include "Servicio.h"
@@ -62,7 +63,7 @@ int main(){
 
 
     //Agregando servicios disponibles
-    string ddeposito = "deposito";
+    string ddeposito = "Depósito";
     string cdeposito = "C";
 
     Servicio *deposito = new Servicio(ddeposito, cdeposito);
@@ -101,8 +102,10 @@ int main(){
     cout << "Escriba el número del proceso que desea realizar: " ;
     int n;                              //Chequear que sea un entero (PROOOFEEEEEEE ) "meter un string"
     cin >> n;
-    while (n < 1 || n > 6){
+    while (cin.fail() || n < 1 || n > 6){
         cout << "El número ingresado no está en las opciones, elija de nuevo que gusta hacer: ";
+        cin.clear();
+        cin.ignore(1000, '\n');
         cin >> n;
     }
     switch(n){
@@ -128,8 +131,10 @@ int main(){
             cout << "Seleccione el número de servicio que desea utilizar: ";
             int numServicio;
             cin >> numServicio;
-            while (numServicio < 0 || numServicio > totalServicios->getSize() - 1){
+            while (cin.fail() || numServicio < 0 || numServicio > totalServicios->getSize() - 1){
                 cout << "El número seleccionado no está enumerado en la lista de servicios. Seleccione de nuevo: ";
+                cin.clear();
+                cin.ignore(1000, '\n');
                 cin >> numServicio;
             }
             totalServicios->goToPos(numServicio);
@@ -154,8 +159,10 @@ int main(){
             cout << "Seleccione el número de servicio que desea utilizar: ";
             int numServicio;
             cin >> numServicio;
-            while (numServicio < 0 || numServicio > totalServicios->getSize() - 1){
+            while (cin.fail() || numServicio < 0 || numServicio > totalServicios->getSize() - 1){
                 cout << "El número seleccionado no está enumerado en la lista de servicios. Seleccione de nuevo: ";
+                cin.clear();
+                cin.ignore(1000, '\n');
                 cin >> numServicio;
             }
             totalServicios->goToPos(numServicio);
@@ -166,7 +173,7 @@ int main(){
                 TipoVentanilla *actual = totalVentanillas->getElement();
                 if (actual->codigo == aSolicitar->codigo){
                     encontrado = true;
-                    cout << "Su tiquete es: " << actual->solicitarTiquete(true);   //Estadísticas
+                    cout << "Su tiquete es: " << actual->solicitarTiquete(true) << endl;   //Estadísticas
                     tiquetesPreferenciales++;
                 }
             }
@@ -204,8 +211,10 @@ int main(){
         cout << "Escriba el numero de la ventanilla que lo va a atender: ";
         int numeroVentanilla;
         cin >> numeroVentanilla;
-        while (numeroVentanilla < 0 || numeroVentanilla > tipoVentanillaAtiende->ventanillas->getSize() - 1){
+        while (cin.fail() || numeroVentanilla < 0 || numeroVentanilla > tipoVentanillaAtiende->ventanillas->getSize() - 1){
             cout << "Seleccione un número de ventanilla existente: ";
+            cin.clear();
+            cin.ignore(1000, '\n');
             cin >> numeroVentanilla;
         }
         cout << tipoVentanillaAtiende->atender(numeroVentanilla);
@@ -220,7 +229,6 @@ int main(){
             cout << "Escoja una opción válida: ";
             cin >> seleccion;
         }
-
         switch(seleccion){
         case 'a':                   //Agregar o Eliminar tipos de ventanillas
             cout << "1. Agregar" << endl;
@@ -228,22 +236,29 @@ int main(){
             cout << "Elija su opción: ";
             int opcion;
             cin >> opcion;
-            while (opcion < 1 || opcion > 2){
+            while (cin.fail() || opcion < 1 || opcion > 2){
                 cout << "Indique alguna de las opciones con el número correspondiente: ";
+                cin.clear();
+                cin.ignore(1000, '\n');
                 cin >> opcion;
             }
             if (opcion == 1){ //Agregar nuevo tipo de ventanillas con descripcion codigo y cantidad
                     cout << "Escriba la descripción de la nueva ventanilla: ";
+                    cin.clear();
+                    cin.ignore(1000, '\n');
                     string descripcionVentanilla;
-                    cin >> descripcionVentanilla;
-                    cout << "Escriba el código de la nueva ventanilla: ";
+                    getline(cin, descripcionVentanilla);
+                    cout << "Escriba el código de la nueva ventanilla (solo se tomará un caracter): ";
+                    cin.clear();
                     string codigoVentanilla;
                     cin >> codigoVentanilla;
                     cout << "Escriba la cantidad de ventanillas deseada: ";
                     int cantida;
                     cin >> cantida;
-                    while (cantida < 1){
+                    while (cin.fail() || cantida < 1){
                         cout << "Escriba la cantidad de ventanillas deseada (entero positivo): ";
+                        cin.clear();
+                        cin.ignore(1000, '\n');
                         cin >> cantida;
                     }
                     TipoVentanilla *nueva = new TipoVentanilla(descripcionVentanilla, codigoVentanilla, cantida);
@@ -252,8 +267,10 @@ int main(){
                     imprimirTotalVentanillas(totalVentanillas);
                     cout << "Ingrese el número de la Ventanilla que desea eliminar: ";
                     cin >> opcion;
-                    while(opcion < 0 || opcion > totalVentanillas->getSize() - 1){
+                    while(cin.fail() || opcion < 0 || opcion > totalVentanillas->getSize() - 1){
                         cout << "Ingrese el número correcto de la Ventanilla que desea eliminar: ";
+                        cin.clear();
+                        cin.ignore(1000, '\n');
                         cin >> opcion;
                     }
                     totalVentanillas->goToPos(opcion); //Eliminando el tipo de ventanilla
@@ -267,16 +284,21 @@ int main(){
             cout << "3. Reordenar elementos en la lista" << endl;
             cout << "Elija su opción: ";
             cin >> opcion;
-            while (opcion < 1 || opcion > 3){
+            while (cin.fail() || opcion < 1 || opcion > 3){
                 cout << "Indique alguna de las opciones con el número correspondiente: ";
+                cin.clear();
+                cin.ignore(1000, '\n');
                 cin >> opcion;
             }
             if (opcion == 1){
                 //Agregar un nuevo tipo de servicio con descripción y código
                     cout << "Escriba la descripción del nuevo servicio: ";
                     string descripcionServicio;
-                    cin >> descripcionServicio;
+                    cin.clear();
+                    cin.ignore(1000, '\n');
+                    getline(cin, descripcionServicio);
                     cout << "Escriba el código del nuevo servicio: ";
+                    cin.clear();
                     string codigoServicio;
                     cin >> codigoServicio;
                     Servicio *nuevo = new Servicio(descripcionServicio, codigoServicio);
@@ -287,8 +309,10 @@ int main(){
                 imprimirTotalServicios(totalServicios);
                 cout << "Ingrese el número del servicio que desea eliminar: ";
                 cin >> opcion;
-                while(opcion < 0 || opcion > totalServicios->getSize() - 1){
+                while(cin.fail() || opcion < 0 || opcion > totalServicios->getSize() - 1){
                     cout << "Ingrese el número correcto del Servicio que desea eliminar: ";
+                    cin.clear();
+                    cin.ignore(1000, '\n');
                     cin >> opcion;
                 }
                 totalServicios->goToPos(opcion); //Eliminando el tipo de ventanilla
@@ -330,7 +354,7 @@ int main(){
                 promedioEspera = 0;
                 if (actual->atendidosTipoVentanilla != 0)
                     promedioEspera = actual->tiempoEspera / actual->atendidosTipoVentanilla;
-                cout << "Tipo de ventanilla: " << actual->descripcion << "Tiempo de espera: " << promedioEspera << endl;
+                cout << "Tipo de ventanilla: " << actual->descripcion << " Tiempo de espera: " << promedioEspera << endl;
             }
 
             break;
