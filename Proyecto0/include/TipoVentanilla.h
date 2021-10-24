@@ -22,10 +22,12 @@ class TipoVentanilla{
 public:
     string descripcion;
     string codigo;
-    LinkedList<Ventanilla> *ventanillas;
+    List<Ventanilla> *ventanillas;
     int cantidad;       //define la cantidad de ventanillas que van a haber en el atributo ventanillas
-    LinkedQueue<Tiquete> *colaRegular;
-    LinkedQueue<Tiquete> *colaPreferencial;
+    Queue<Tiquete> *colaRegular;
+    Queue<Tiquete> *colaPreferencial;
+    int numeroTiquete = 0;
+    int solicitadosPreferenciales = 0;
 
 
     TipoVentanilla(){
@@ -77,15 +79,44 @@ public:
         colaRegular->print();
         cout << "cola preferencial: ";
         colaPreferencial->print();
-        cout << "ventanillas: " << endl;
+        cout << "ventanillas: ";
         ventanillas->print();
     }
 
     //Funcion para solicitar Tiquete
-    //se puede retornar para imprimir el tiquete o string
-   // Tiquete* solicitarTiquete(bool preferencial){
+    string solicitarTiquete(bool preferencia){
+        string numero = to_string(numeroTiquete);
+        string codigoTiquete = codigo + numero;
+        if (preferencia){
+            Tiquete nuevo(codigoTiquete, true);
+            colaPreferencial->enqueue(nuevo);
+            numeroTiquete++;
+            solicitadosPreferenciales++;
+            return codigoTiquete;
+        }
+        Tiquete nuevo(codigo + numero, false);
+        colaRegular->enqueue(nuevo);
+        numeroTiquete++;
+        return codigoTiquete;
+    }
 
-   // }
+    //Función que atiende en una ventanilla determinada
+    string atender(int numeroVentanilla){
+        ventanillas->goToPos(numeroVentanilla);
+        Ventanilla actual = ventanillas->getElement();
+        if (colaPreferencial->getSize() != 0){
+            Tiquete aAtender = colaPreferencial->dequeue();
+            actual.campo = aAtender;
+            actual.atendidos++;     //llevar cuenta de tiquetes atendidos por ventanilla específica
+            return "Se está atendiendo un tiquete preferencial. \n";
+        }else if (colaRegular->getSize() != 0){
+            Tiquete aAtender = colaRegular->dequeue();
+            actual.campo = aAtender;
+            actual.atendidos++;     //llevar cuenta de tiquetes atendidos por ventanilla específica
+            return "Se está atendiendo un tiquete. \n";
+        }
+        return "No hay tiquetes en la cola. \n";
+    }
 
     void operator=(const TipoVentanilla& other){
         this->codigo = other.codigo;

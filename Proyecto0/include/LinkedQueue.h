@@ -35,7 +35,7 @@ public:
 
     E dequeue(){
         if (size == 0)
-            throw runtime_error("Que is empty.");
+            throw runtime_error("Queue is empty.");
         E result = front->next->element;
         Node<E> *temp = front->next;
         front->next = temp->next;

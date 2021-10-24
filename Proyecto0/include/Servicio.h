@@ -15,6 +15,7 @@ class Servicio{
 public:
     string descripcion;
     string codigo;
+    int tiquetesSolicitados;
 //    List<Servicio> *listaServicios = new ArrayList<Servicio>();
 
     Servicio(){

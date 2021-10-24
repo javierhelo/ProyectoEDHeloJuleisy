@@ -49,7 +49,7 @@ public:
 // Función para sobreescribir el funcionamiento del operador
 //<< en Tiquete
 ostream& operator << (ostream& os, const Tiquete& p){
-    os << p.codigo << " " << p.preferencia << endl;
+    os << p.codigo;
     return os;
 }
 

@@ -8,29 +8,25 @@ using std::string;
 class Ventanilla{
 public:
     string codigo;
-    Tiquete *campo;
+    Tiquete campo;
+    int atendidos = 0;  //atributo para llevar cuenta de tiquetes atendidos por ventanilla específica
 
 
     Ventanilla(){}
 //    Ventanilla(string codigo){
 //        this->codigo = codigo;
 //    }
-    Ventanilla(string codigo, Tiquete *campo = nullptr){
+    Ventanilla(string codigo, Tiquete campo){
         this->codigo = codigo;
         this->campo = campo;
+    }
+    Ventanilla(string codigo){
+        this->codigo = codigo;
     }
     ~Ventanilla(){
 
     }
-    void setCodigo(string codigo){
-        this->codigo = codigo;
-    }
-    void setCampo(Tiquete *nuevoTiquet){ //Seria atender?
-        campo = nuevoTiquet;
-    }
-    Tiquete* getCampo(){
-        return campo;
-    }
+
 
     //Operadores de la clase
     void operator=(const Ventanilla& other){

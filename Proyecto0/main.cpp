@@ -86,7 +86,7 @@ int main(){
 
     //MENU PRINCIPAL
 
-
+    int tiquetesPreferenciales = 0;     //Contador de tiquetes preferenciales
     bool seguirDentro = true;
     while (seguirDentro){
     bool regresar = false;     //Variable para poder utilizar la opción de regresar al menú principal
@@ -100,7 +100,6 @@ int main(){
     cout << "Escriba el número del proceso que desea realizar: " ;
     int n;      //Chequear que sea un entero (PROOOFEEEEEEE ) "meter un string"
     cin >> n;
-
     while (n < 1 || n > 6){
         cout << "El número ingresado no está en las opciones, elija de nuevo que gusta hacer: ";
         cin >> n;
@@ -123,14 +122,56 @@ int main(){
         }
         switch(seleccion){
         case 'a':               //El usuario elige un servicio y el sistema lo pone en la cola correspondiente
+            {
             imprimirTotalServicios(totalServicios);
-
+            cout << "Seleccione el número de servicio que desea utilizar: ";
+            int numServicio;
+            cin >> numServicio;
+            while (numServicio < 0 || numServicio > totalServicios->getSize() - 1){
+                cout << "El número seleccionado no está enumerado en la lista de servicios. Seleccione de nuevo: ";
+                cin >> numServicio;
+            }
+            totalServicios->goToPos(numServicio);
+            Servicio *aSolicitar = totalServicios->getElement();
+            aSolicitar->tiquetesSolicitados++;          //llevar estadísticas de los tiquetes;
+            bool encontrado = false;
+            for (totalVentanillas->goToStart(); !totalVentanillas->atEnd(); totalVentanillas->next()){
+                TipoVentanilla *actual = totalVentanillas->getElement();
+                if (actual->codigo == aSolicitar->codigo){
+                    encontrado = true;
+                    cout << "Su tiquete es: " << actual->solicitarTiquete(false);
+                }
+            }
+            if (!encontrado){
+                cout << "El código de su servicio no está relacionado con ningún tipo de ventanilla.";
+            }
             break;
+        }
         case 'b':               //Se coloca como cliente preferencial para el servicio que seleccione
         {                       //Se rodea con un bloque de corchetes para poder declarar una variable nueva en el case
             imprimirTotalServicios(totalServicios);
-            Tiquete *nuevo = new Tiquete();
-
+            cout << "Seleccione el número de servicio que desea utilizar: ";
+            int numServicio;
+            cin >> numServicio;
+            while (numServicio < 0 || numServicio > totalServicios->getSize() - 1){
+                cout << "El número seleccionado no está enumerado en la lista de servicios. Seleccione de nuevo: ";
+                cin >> numServicio;
+            }
+            totalServicios->goToPos(numServicio);
+            Servicio *aSolicitar = totalServicios->getElement();
+            aSolicitar->tiquetesSolicitados++;
+            bool encontrado = false;
+            for (totalVentanillas->goToStart(); !totalVentanillas->atEnd(); totalVentanillas->next()){
+                TipoVentanilla *actual = totalVentanillas->getElement();
+                if (actual->codigo == aSolicitar->codigo){
+                    encontrado = true;
+                    cout << "Su tiquete es: " << actual->solicitarTiquete(true);   //Estadísticas
+                    tiquetesPreferenciales++;
+                }
+            }
+            if (!encontrado){
+                cout << "El código de su servicio no está relacionado con ningún tipo de ventanilla.";
+            }
             break;
         }
 
@@ -140,10 +181,35 @@ int main(){
         }
         break;
 
-    case 3:
-        //Solicitar tipo de ventanilla y numero para buscar en las colas
-        //el siguiente tiquete a atender, lo borra y lo atiende actualmente.
+    case 3:                 //Solicitar tipo de ventanilla y numero para buscar en las colas
+                            //el siguiente tiquete a atender, lo borra y lo atiende actualmente.
+        {
+        cout << "Escriba el codigo del tipo de ventanilla atenderá el siguiente Tiquete: ";
+        string codigoAtender;
+        cin >> codigoAtender;
+        bool estaVentanilla = false;    //valor para saber si el código que ingreso el usuario es correcto
+        TipoVentanilla *tipoVentanillaAtiende;
+        for (totalVentanillas->goToStart(); !totalVentanillas->atEnd(); totalVentanillas->next()){
+            TipoVentanilla *actual = totalVentanillas->getElement();
+            if (actual->codigo == codigoAtender){
+                estaVentanilla = true;
+                tipoVentanillaAtiende = actual;       //guardando en que tipo de ventanilla se atenderá
+            }
+        }
+        if (!estaVentanilla){
+            cout << "El codigo de tipo de ventanilla que escribió no fue encontrado";
+            break;
+        }
+        cout << "Escriba el numero de la ventanilla que lo va a atender: ";
+        int numeroVentanilla;
+        cin >> numeroVentanilla;
+        while (numeroVentanilla < 0 || numeroVentanilla > tipoVentanillaAtiende->ventanillas->getSize() - 1){
+            cout << "Seleccione un número de ventanilla existente: ";
+            cin >> numeroVentanilla;
+        }
+        cout << tipoVentanillaAtiende->atender(numeroVentanilla);
         break;
+        }
     case 4:
         cout << "a. Definir tipos de ventanillas" << endl;
         cout << "b. Definir servicios disponibles" << endl;
@@ -153,6 +219,7 @@ int main(){
             cout << "Escoja una opción válida: ";
             cin >> seleccion;
         }
+
         switch(seleccion){
         case 'a':
             cout << "1. Agregar" << endl;
@@ -241,13 +308,61 @@ int main(){
             break;
         }
         break;
-    case 5:
-        //Tiempo promedio de espera por tipo de ventanilla
-        //Total de tiquetes dispensados por tipo de ventanilla
-        //Total de tiquetes atendidos por ventanilla
-        //Total de tiquetes dispensados por tipo de transacción
-        //Total de tiquetes preferenciales dispensados en todo el sistema
+    case 5:     //Estadísticas del sistema
+        {
+        cout << "a. Tiempo promedio de espera por tipo de ventanilla. " << endl;
+        cout << "b. Total de tiquetes dispensados por tipo de ventanilla. " << endl;
+        cout << "c. Total de tiquetes atendidos por ventanilla. " << endl;
+        cout << "d. Total de tiquetes dispensados por tipo de transacción. " << endl;
+        cout << "e. Total de tiquetes preferenciales dispensados en todo el sistema. " << endl;
+        char letra;
+        cin >> letra;
+        while (letra != 'a' && letra != 'b' && letra != 'c' && letra != 'd' && letra != 'e'){
+            cout << "Seleccione alguna de las opciones especificadas: ";
+            cin >> letra;
+        }
+        switch(letra){
+        case 'a':       //Tiempo promedio de espera por tipo de ventanilla.
+
+            break;
+        case 'b':       //Total de tiquetes dispensados por tipo de ventanilla.
+            for (totalVentanillas->goToStart(); !totalVentanillas->atEnd(); totalVentanillas->next()){
+                TipoVentanilla *actual = totalVentanillas->getElement();
+                cout << "Total de Tiquetes de " << actual->descripcion << ": " << actual->numeroTiquete << endl;
+            }
+            break;
+        case 'c':       //Total de tiquetes atendidos por ventanilla.
+            for (totalVentanillas->goToStart(); !totalVentanillas->atEnd(); totalVentanillas->next()){
+                TipoVentanilla *actual = totalVentanillas->getElement();
+                cout << actual->descripcion << ":" << endl;
+                List<Ventanilla> *listaVentanillas = actual->ventanillas;
+                for (listaVentanillas->goToStart(); !listaVentanillas->atEnd(); listaVentanillas->next()){
+                    Ventanilla ventanillaActual = listaVentanillas->getElement();
+                    cout << ventanillaActual.codigo << "->" << ventanillaActual.atendidos << " ";
+                }
+                cout << endl;
+            }
+            break;
+        case 'd':       //Total de tiquetes dispensados por tipo de transacción.
+            for (totalServicios->goToStart(); !totalServicios->atEnd(); totalServicios->next()){
+                Servicio *actual = totalServicios->getElement();
+                cout << actual->descripcion << "->" << actual->tiquetesSolicitados << endl;
+            }
+            break;
+        case 'e':       //Total de tiquetes preferenciales dispensados en todo el sistema.
+            {
+            int i = 0;
+            for (totalVentanillas->goToStart(); !totalVentanillas->atEnd(); totalVentanillas->next()){
+                TipoVentanilla *actual = totalVentanillas->getElement();
+                i += actual->solicitadosPreferenciales;
+            }
+            cout << "El total de tiquetes preferenciales omitidos es de : " << i << endl;
+            break;
+            }
+
+        }
         break;
+        }
     case 6:
         return 0;
     }
