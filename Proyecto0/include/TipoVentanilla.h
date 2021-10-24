@@ -1,5 +1,6 @@
 //Clase que define los tipos de ventanillas que se pueden crear
-//
+//Autores: Javier Helo y Juleisy Porras
+
 #ifndef TIPOVENTANILLA_H
 #define TIPOVENTANILLA_H
 #include <iostream>
@@ -29,11 +30,13 @@ public:
     Queue<Tiquete> *colaPreferencial;
     int numeroTiquete = 0;              //variable para saber por que numero de tiquete va la ventanilla
     int solicitadosPreferenciales = 0;  //llevar cuenta de cuantos tiquetes preferenciales se solicitan
-
-
-
+    long tiempoEspera;                  //suma de tiempos de espera en que fue atendido cada tiquete
+    time_t inicio;                      //variable tipo time que indica el inicio del lapso de tiempo
+    time_t final;                       //variable tipo time que indica el final del lapso de tiempo
+    long atendidosTipoVentanilla = 0;    //atributo para llevar cuenta de tiquetes atendidos por tipo de ventanilla
     TipoVentanilla(){
     }
+
     TipoVentanilla(string descripcion, string codigo, int cantidad){
         this->descripcion = descripcion;
         this->codigo = codigo;
@@ -92,12 +95,14 @@ public:
         if (preferencia){
             Tiquete nuevo(codigoTiquete, true);
             colaPreferencial->enqueue(nuevo);
+            time(&inicio);
             numeroTiquete++;
             solicitadosPreferenciales++;
             return codigoTiquete;
         }
         Tiquete nuevo(codigo + numero, false);
         colaRegular->enqueue(nuevo);
+        time(&inicio);
         numeroTiquete++;
         return codigoTiquete;
     }
@@ -108,13 +113,19 @@ public:
         Ventanilla actual = ventanillas->getElement();
         if (colaPreferencial->getSize() != 0){
             Tiquete aAtender = colaPreferencial->dequeue();
+            time(&final);
+            tiempoEspera += difftime(final,inicio);
             actual.campo = aAtender;
-            actual.atendidos++;     //llevar cuenta de tiquetes atendidos por ventanilla específica
+            actual.atendidos++;        //llevar cuenta de tiquetes atendidos por ventanilla específica
+            atendidosTipoVentanilla++; //llevar cuenta de tiquetes atendidos por tipo de ventanilla
             return "Se está atendiendo un tiquete preferencial. \n";
         }else if (colaRegular->getSize() != 0){
             Tiquete aAtender = colaRegular->dequeue();
+            time(&final);
+            tiempoEspera += difftime(final,inicio);
             actual.campo = aAtender;
             actual.atendidos++;     //llevar cuenta de tiquetes atendidos por ventanilla específica
+            atendidosTipoVentanilla++; //llevar cuenta de tiquetes atendidos por tipo de ventanilla
             return "Se está atendiendo un tiquete. \n";
         }
         return "No hay tiquetes en la cola. \n";

@@ -1,3 +1,6 @@
+//Clase de una ventanilla individual que atiende tiquete
+//Autores: Javier Helo y Juleisy Porras
+
 #ifndef VENTANILLA_H
 #define VENTANILLA_H
 #include "Tiquete.h"

@@ -35,8 +35,6 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="include/ArrayList.h" />
-		<Unit filename="include/Dictionary.h" />
-		<Unit filename="include/KVPair.h" />
 		<Unit filename="include/LinkedList.h" />
 		<Unit filename="include/LinkedQueue.h" />
 		<Unit filename="include/List.h" />
@@ -45,7 +43,6 @@
 		<Unit filename="include/Servicio.h" />
 		<Unit filename="include/TipoVentanilla.h" />
 		<Unit filename="include/Tiquete.h" />
-		<Unit filename="include/UnsortedArrayDictionary.h" />
 		<Unit filename="include/Ventanilla.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>

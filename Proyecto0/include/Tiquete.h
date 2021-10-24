@@ -1,3 +1,6 @@
+//Clase que define un tiquete para que el usuario pueda ser atendido
+//Autores: Javier Helo y Juleisy Porras
+
 #ifndef TIQUETE_H
 #define TIQUETE_H
 #include <iostream>

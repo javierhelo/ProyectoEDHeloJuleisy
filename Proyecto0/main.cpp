@@ -324,6 +324,14 @@ int main(){
         }
         switch(letra){
         case 'a':       //Tiempo promedio de espera por tipo de ventanilla.
+            long promedioEspera;
+            for (totalVentanillas->goToStart(); !totalVentanillas->atEnd(); totalVentanillas->next()){
+                TipoVentanilla *actual = totalVentanillas->getElement();
+                promedioEspera = 0;
+                if (actual->atendidosTipoVentanilla != 0)
+                    promedioEspera = actual->tiempoEspera / actual->atendidosTipoVentanilla;
+                cout << "Tipo de ventanilla: " << actual->descripcion << "Tiempo de espera: " << promedioEspera << endl;
+            }
 
             break;
         case 'b':       //Total de tiquetes dispensados por tipo de ventanilla.

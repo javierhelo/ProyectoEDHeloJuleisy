@@ -40,27 +40,28 @@
 
 1634709898 c:\users\javier\documents\github\proyectoedhelojuleisy\proyecto0\include\queue.h
 
-1634863481 source:c:\users\juley\documents\github\proyectoedhelojuleisy\proyecto0\main.cpp
+1635063867 source:c:\users\juley\documents\github\proyectoedhelojuleisy\proyecto0\main.cpp
 	<iostream>
 	<locale.h>
 	"TipoVentanilla.h"
 	"Servicio.h"
 	"Tiquete.h"
 
-1634862600 c:\users\juley\documents\github\proyectoedhelojuleisy\proyecto0\include\tipoventanilla.h
+1635064133 c:\users\juley\documents\github\proyectoedhelojuleisy\proyecto0\include\tipoventanilla.h
 	<iostream>
 	<sstream>
+	<time.h>
 	<string>
 	"Tiquete.h"
 	"Ventanilla.h"
 	"LinkedList.h"
 	"LinkedQueue.h"
 
-1634859023 c:\users\juley\documents\github\proyectoedhelojuleisy\proyecto0\include\tiquete.h
+1635062533 c:\users\juley\documents\github\proyectoedhelojuleisy\proyecto0\include\tiquete.h
 	<iostream>
 	<string>
 
-1634859023 c:\users\juley\documents\github\proyectoedhelojuleisy\proyecto0\include\ventanilla.h
+1635061956 c:\users\juley\documents\github\proyectoedhelojuleisy\proyecto0\include\ventanilla.h
 	"Tiquete.h"
 	<string>
 
@@ -73,7 +74,7 @@
 
 1634859022 c:\users\juley\documents\github\proyectoedhelojuleisy\proyecto0\include\node.h
 
-1634859022 c:\users\juley\documents\github\proyectoedhelojuleisy\proyecto0\include\linkedqueue.h
+1635058693 c:\users\juley\documents\github\proyectoedhelojuleisy\proyecto0\include\linkedqueue.h
 	<ostream>
 	"Queue.h"
 	"Node.h"
@@ -81,12 +82,12 @@
 
 1634859023 c:\users\juley\documents\github\proyectoedhelojuleisy\proyecto0\include\queue.h
 
-1634862600 c:\users\juley\documents\github\proyectoedhelojuleisy\proyecto0\include\servicio.h
+1635061956 c:\users\juley\documents\github\proyectoedhelojuleisy\proyecto0\include\servicio.h
 	"ArrayList.h"
 	<string>
 	<stdexcept>
 
-1634859022 c:\users\juley\documents\github\proyectoedhelojuleisy\proyecto0\include\arraylist.h
+1635061956 c:\users\juley\documents\github\proyectoedhelojuleisy\proyecto0\include\arraylist.h
 	"List.h"
 	<stdexcept>
 
